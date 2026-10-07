@@ -253,18 +253,6 @@ app.get(
     });
   }
 );
-app.get("/debug/image/:filename", (req, res) => {
-  const filePath = path.join(
-    process.cwd(),
-    "public",
-    "products",
-    req.params.filename
-  );
 
-  return res.json({
-    filename: req.params.filename,
-    exists: fs.existsSync(filePath),
-  });
-});
 
 export default app;
