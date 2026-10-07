@@ -253,25 +253,17 @@ app.get(
     });
   }
 );
-app.get("/debug/products", (_req, res) => {
-  const directory = path.join(
+app.get("/debug/image/:filename", (req, res) => {
+  const filePath = path.join(
     process.cwd(),
     "public",
-    "products"
+    "products",
+    req.params.filename
   );
 
-  if (!fs.existsSync(directory)) {
-    return res.json({
-      exists: false,
-      files: [],
-    });
-  }
-
-  const files = fs.readdirSync(directory);
-
   return res.json({
-    exists: true,
-    files,
+    filename: req.params.filename,
+    exists: fs.existsSync(filePath),
   });
 });
 
