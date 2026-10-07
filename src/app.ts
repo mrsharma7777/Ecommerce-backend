@@ -101,7 +101,7 @@ import helmet from "helmet";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+import fs from "fs";
 import productRoutes from "./routes/product.routes";
 import categoryRoutes from "./routes/category.routes.js";
 import authRoutes from "./routes/auth.routes.js";
@@ -253,5 +253,26 @@ app.get(
     });
   }
 );
+app.get("/debug/products", (_req, res) => {
+  const directory = path.join(
+    process.cwd(),
+    "public",
+    "products"
+  );
+
+  if (!fs.existsSync(directory)) {
+    return res.json({
+      exists: false,
+      files: [],
+    });
+  }
+
+  const files = fs.readdirSync(directory);
+
+  return res.json({
+    exists: true,
+    files,
+  });
+});
 
 export default app;
