@@ -101,7 +101,7 @@ import helmet from "helmet";
 import compression from "compression";
 import cookieParser from "cookie-parser";
 import path from "path";
-import fs from "fs";
+
 import productRoutes from "./routes/product.routes";
 import categoryRoutes from "./routes/category.routes.js";
 import authRoutes from "./routes/auth.routes.js";
