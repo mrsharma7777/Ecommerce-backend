@@ -9,7 +9,7 @@
 // import authRoutes from "./routes/auth.routes.js";
 // const app = express();
 
-// // Security headers
+// // Security header
 // app.use(helmet());
 // app.use("/api/auth", authRoutes);
 
